@@ -1,6 +1,3 @@
-# NO LONGER MAINTAINED
-I use keyfile now for this.
-
 # Notes from lewibs
 - use this with qmk wsl.
 - all I need are the maps so I got rid of everything except the readme
