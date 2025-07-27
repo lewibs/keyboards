@@ -27,9 +27,11 @@
 #define KC_MUP KC_MS_UP
 #define KC_MDWN KC_MS_DOWN
 #define KC_PLFT KC_MS_WH_LEFT
-#define MC_PLFT KC_MS_WH_RIGHT
+#define KC_PRIT KC_MS_WH_RIGHT
 #define KC_PUP KC_MS_WH_UP
 #define KC_PDWN KC_MS_WH_DOWN
+#define MC_PUP KC_MS_WH_DOWN
+#define MC_PDWN KC_MS_WH_UP
 #define KC_BWRD LCTL(KC_BSPC)
 #define KC_DWRD LCTL(KC_DEL)
 #define MC_BWRD LALT(KC_BSPC)
@@ -48,6 +50,7 @@
 #define _MAC_BASE 6
 #define _MAC_SYMS 7
 #define _MAC_MOS 8
+#define _MAC_DEL 9
 
 #define HOLDING_TERM 65
 
@@ -74,10 +77,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAC_BASE] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_R_GUI, KC_ROPT,  KC_TRANS, KC_TRANS, M_SYMS,    KC_TRANS, KC_TRANS, XXXXXXX, KC_TRANS, KC_TRANS,  M_MOUSE,  KC_TRANS, KC_TRANS,  KC_TRANS
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_R_GUI, KC_ROPT,  KC_TRNS,  KC_TRNS,  M_SYMS,    KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   M_MOUSE,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 
     [_NUMS] = LAYOUT(
@@ -85,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_0,     KC_1,    KC_2,    KC_3,     XXXXXXX,  KC_TRNS,                   KC_TRNS, XXXXXXX, KC_PERC, KC_TILD, KC_BSLS, XXXXXXX,
         KC_DOT,   KC_4,    KC_5,    KC_6,     XXXXXXX,  KC_GRAVE,                  KC_TRNS, XXXXXXX, KC_MINUS,KC_PLUS, KC_SLASH,KC_ASTR,
         KC_EQUAL, KC_7,    KC_8,    KC_9,     XXXXXXX,  KC_TRNS,                   KC_TRNS, XXXXXXX, XXXXXXX, KC_LABK, KC_RABK, KC_CIRC,
-        KC_TRANS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
         ),
 
     [_SYMS] = LAYOUT(
@@ -93,15 +96,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_TLFT, XXXXXXX, KC_TRIT, KC_TAB,  KC_TRNS,                   KC_TRNS, XXXXXXX, KC_EXLM, KC_LCBR, KC_RCBR, KC_AT,
         XXXXXXX,  KC_SLFT, KC_LALT, KC_SRIT, XXXXXXX, KC_GRAVE,                  KC_TRNS, XXXXXXX, KC_HASH, KC_LPRN, KC_RPRN, KC_DLR,
         XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,                   KC_TRNS, XXXXXXX, KC_PIPE, KC_LBRC, KC_RBRC, KC_AMPR,
-        KC_TRANS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS               
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS               
         ),
 
     [_MAC_SYMS] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRANS, MC_TLFT,  KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, MC_SLFT,  KC_R_GUI, MC_SRIT,  KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, XXXXXXX, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS
+        KC_TRNS,  MC_TLFT,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  MC_SLFT,  KC_R_GUI, MC_SRIT,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 
     [_FN] = LAYOUT(
@@ -122,10 +125,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAC_MOS] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, MC_WLFT,   KC_TRANS, KC_TRANS, KC_TRANS, MC_WRIT,
-        KC_TRANS, KC_PDWN,  KC_TRANS, KC_PUP,   KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, XXXXXXX, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  MC_WLFT,   KC_TRNS,  KC_TRNS,  KC_TRNS,  MC_WRIT,
+        KC_TRNS,  MC_PDWN,  KC_TRNS,  MC_PUP,   KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 
     [_DEL] = LAYOUT(
@@ -134,21 +137,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, XXXXXXX, KC_ESC,  KC_ENTER,XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_BSPC, KC_BWRD, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-        )
+        ),
 
     [_MAC_DEL] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, MC_DWRD,  KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_ESC,   KC_ENTER, KC_TRANS,  KC_TRANS,                    KC_TRANS, KC_TRANS,  KC_TRANS, MC_BWRD,  KC_TRANS, KC_TRANS,
-        KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, XXXXXXX, KC_TRANS, KC_TRANS,  KC_TRANS, KC_TRANS, KC_TRANS, KC_TRANS
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_DWRD,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    state = update_tri_layer_state(state, _SYMS, _NUMS, _DEL);
-    return state;
-}
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   bool _delete_is_on = layer_state_cmp(state, _SYMS) && layer_state_cmp(state, _NUMS);
@@ -178,7 +176,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     return mouse_report;
 }
 
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint16_t hold_timer;
 
@@ -200,7 +197,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             return false;
-        case m_mouse:
+
+        case M_MOUSE:
             if (record->event.pressed) {
                 layer_on(_MOS);
                 layer_on(_MAC_MOS);
@@ -209,10 +207,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_MOS);
             }
             return false;
-            break;
 
-            
-        case m_syms:
+        case M_SYMS:
             if (record->event.pressed) {
                 layer_on(_SYMS);
                 layer_on(_MAC_SYMS);
@@ -221,7 +217,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_SYMS);
             }
             return false;
-            break;
+    }
 
     return true;
 }
@@ -277,6 +273,12 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
     [8] =   {
+            //Encoder 1
+            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
+            //Encoder 2
+            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
+            },
+    [9] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
