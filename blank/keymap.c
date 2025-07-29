@@ -40,16 +40,21 @@
 #define KC_REDO LCTL(KC_Y)
 #define KC_R_GUI KC_RIGHT_GUI
 #define TOG_MAC TG(_MAC_BASE)
+#define MAC_SRCH LGUI(KC_SPC)
+#define MC_NTAB LGUI(KC_T)
+#define MC_DTAB LGUI(KC_W)
+#define KC_NTAB LCTL(KC_T)
+#define KC_DTAB LCTL(KC_W)
 
 #define _BASE 0
-#define _NUMS 1
-#define _SYMS 2
-#define _FN 3
-#define _MOS 4
-#define _DEL 5
-#define _MAC_BASE 6
-#define _MAC_SYMS 7
-#define _MAC_MOS 8
+#define _MAC_BASE 1
+#define _NUMS 2
+#define _SYMS 3
+#define _MAC_SYMS 4
+#define _FN 5
+#define _MOS 6
+#define _MAC_MOS 7
+#define _DEL 8
 #define _MAC_DEL 9
 
 #define HOLDING_TERM 65
@@ -76,11 +81,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
     [_MAC_BASE] = LAYOUT(
-        XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
-        KC_R_GUI, KC_ROPT,  KC_TRNS,  KC_TRNS,  M_SYMS,    KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   M_MOUSE,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        KC_R_GUI, KC_ROPT,  KC_TRNS,  KC_TRNS,  M_SYMS,    KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   M_MOUSE,  KC_TRNS,  KC_TRNS,  MAC_SRCH
         ),
 
     [_NUMS] = LAYOUT(
@@ -93,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_SYMS] = LAYOUT(
         XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX,  KC_TLFT, XXXXXXX, KC_TRIT, KC_TAB,  KC_TRNS,                   KC_TRNS, XXXXXXX, KC_EXLM, KC_LCBR, KC_RCBR, KC_AT,
+        KC_DTAB,  KC_TLFT, KC_NTAB, KC_TRIT, KC_TAB,  KC_TRNS,                   KC_TRNS, XXXXXXX, KC_EXLM, KC_LCBR, KC_RCBR, KC_AT,
         XXXXXXX,  KC_SLFT, KC_LALT, KC_SRIT, XXXXXXX, KC_GRAVE,                  KC_TRNS, XXXXXXX, KC_HASH, KC_LPRN, KC_RPRN, KC_DLR,
         XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_TRNS,                   KC_TRNS, XXXXXXX, KC_PIPE, KC_LBRC, KC_RBRC, KC_AMPR,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, XXXXXXX, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS               
@@ -101,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAC_SYMS] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRNS,  MC_TLFT,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
+        MC_DTAB,  MC_TLFT,  MC_NTAB,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  MC_SLFT,  KC_R_GUI, MC_SRIT,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
@@ -141,9 +146,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAC_DEL] = LAYOUT(
         XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,                     XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_DWRD,  KC_TRNS,  KC_TRNS, 
-        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS, 
+        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,                     KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, 
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  XXXXXXX, KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 };
@@ -224,61 +229,61 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] =   {
+    [_BASE] =   {
             //Encoder 1
-            ENCODER_CCW_CW(KC_PGDN, KC_PGUP),
+            ENCODER_CCW_CW(KC_PDWN, KC_PUP),
             //Encoder 2
             ENCODER_CCW_CW(XXXXXXX, XXXXXXX),
             },
-    [1] =   {
+    [_MAC_BASE] =   {
             //Encoder 1
-            ENCODER_CCW_CW(KC_UNDO, KC_REDO),
+            ENCODER_CCW_CW(MC_PDWN, MC_PUP),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [2] =   {
-            //Encoder 1
-            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
-            //Encoder 2
-            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
-            },
-    [3] =   {
+    [_NUMS] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [4] =   {
+    [_SYMS] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [5] =   {
+    [_MAC_SYMS] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [6] =   {
+    [_FN] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [7] =   {
+    [_MOS] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [8] =   {
+    [_MAC_MOS] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             },
-    [9] =   {
+    [_DEL] =   {
+            //Encoder 1
+            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
+            //Encoder 2
+            ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
+            },
+    [_MAC_DEL] =   {
             //Encoder 1
             ENCODER_CCW_CW(KC_TRNS, KC_TRNS),
             //Encoder 2
