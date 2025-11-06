@@ -1,4 +1,5 @@
 # Notes from lewibs
+- make sure to run the venv that has the qmk installed.
 - use this with qmk wsl.
 - all I need are the maps so I got rid of everything except the readme
 
