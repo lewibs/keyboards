@@ -4,300 +4,193 @@
 
 extern rgb_config_t rgb_matrix_config;
 
-enum keycodes {
-  DUMMY_INIT_VAL = SAFE_RANGE,
-  m_mouse,
-  m_syms,
-  m_pnt,
-  m_check,
-  m_for,
-  m_while,
-  m_const,
-  m_else,
-  m_brew
-};
+#define KC_BRIU KC_BRIGHTNESS_UP
+#define KC_BRID KC_BRIGHTNESS_DOWN
+#define KC_VOLU KC_AUDIO_VOL_UP
+#define KC_VOLD KC_AUDIO_VOL_DOWN
+#define KC_VOLM KC_AUDIO_MUTE
+#define KC_PAUS KC_MEDIA_PLAY_PAUSE
+#define KC_TRIT LCTL(KC_TAB)
+#define MC_TRIT LGUI(LOPT(KC_RIGHT))
+#define KC_TLFT LCTL(LSFT(KC_TAB))
+#define MC_TLFT LGUI(LOPT(KC_LEFT))
+#define KC_SLFT LALT(LCTL(KC_LEFT))
+#define MC_SLFT LCTL(KC_LEFT)
+#define KC_SRIT LALT(LCTL(KC_RIGHT))
+#define MC_SRIT LCTL(KC_RIGHT)
+#define KC_LCLC KC_MS_BTN1
+#define KC_RCLC KC_MS_BTN2
+#define KC_WLFT LCTL(KC_LEFT)
+#define KC_WRIT LCTL(KC_RIGHT)
+#define MC_WLFT LALT(KC_LEFT)
+#define MC_WRIT LALT(KC_RIGHT)
+#define KC_MLFT KC_MS_LEFT
+#define KC_MRIT KC_MS_RIGHT
+#define KC_MUP KC_MS_UP
+#define KC_MDWN KC_MS_DOWN
+#define KC_PLFT KC_MS_WH_LEFT
+#define KC_PRIT KC_MS_WH_RIGHT
+#define KC_PUP KC_MS_WH_UP
+#define KC_PDWN KC_MS_WH_DOWN
+#define MC_PUP KC_MS_WH_DOWN
+#define MC_PDWN KC_MS_WH_UP
+#define KC_BWRD LCTL(KC_BSPC)
+#define KC_DWRD LCTL(KC_DEL)
+#define MC_BWRD LALT(KC_BSPC)
+#define MC_DWRD LALT(KC_DELETE)
+#define KC_UNDO LCTL(KC_Z)
+#define KC_REDO LCTL(KC_Y)
+#define KC_R_GUI KC_RIGHT_GUI
+#define MC_MENU LGUI(KC_SPACE)
+#define TOG_MAC TG(_MAC_BASE)
+#define MC_NTAB LGUI(KC_T)
+#define MC_DTAB LGUI(KC_W)
+#define MC_SRCH LGUI(KC_L)
+#define KC_NTAB LCTL(KC_T)
+#define KC_DTAB LCTL(KC_W)
+#define KC_SRCH LCTL(KC_L)
 
-enum layers {
-  _base,
-  _mac,
-  _symbols,
-  _mac_symbols,
-  _math,
-  _delete,
-  _mac_delete,
-  _mouse,
-  _mouse_mac,
-  _fn,
-  _macro
-};
+#define _BASE 0
+#define _NUMS 1
+#define _SYMS 2
+#define _FN 3
+#define _MOS 4
+#define _DEL 5
+#define _MAC_BASE 6
+#define _MAC_SYMS 7
+#define _MAC_MOS 8
+#define _MAC_DEL 9
+
+#define HOLDING_TERM 65
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_base] = LAYOUT_planck_grid(
-        KC_Q, KC_W, KC_E, KC_R, KC_T, KC_DELETE, KC_BSPC, KC_Y, KC_U, KC_I,
-        KC_O, KC_P, KC_A, KC_S, KC_D, KC_F, KC_G, KC_QUOTE, KC_TAB, KC_H, KC_J,
-        KC_K, KC_L, KC_SCLN, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_ESCAPE, KC_ENTER,
-        KC_N, KC_M, KC_COMMA, KC_DOT, KC_SLASH, KC_LEFT_CTRL, KC_LEFT_ALT,
-        MO(_fn), KC_LSFT, MO(_symbols), KC_SPACE, KC_NO, MO(_math), MO(_mouse),
-        MO(_macro), KC_LEFT_GUI, KC_LEFT_CTRL),
-    [_mac] = LAYOUT_planck_grid(
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_RIGHT_GUI,   KC_ROPT,  KC_TRANSPARENT, KC_TRANSPARENT, m_syms,
-        KC_TRANSPARENT, KC_NO, KC_TRANSPARENT, m_mouse, KC_TRANSPARENT,
-        LGUI(KC_SPACE), KC_LEFT_CTRL),
-    [_macro] = LAYOUT_planck_grid(
-        KC_NO, m_while, m_else, KC_NO, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_NO, KC_NO, m_check, KC_NO, m_pnt, KC_NO, KC_NO, KC_NO, m_for, KC_NO,
-        KC_GRAVE, KC_TRANSPARENT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, m_const, KC_NO, m_brew, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT),
-    [_symbols] = LAYOUT_planck_grid(
-        KC_NO, LCTL(LSFT(KC_TAB)), KC_NO, LCTL(KC_TAB), KC_TAB, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_NO, KC_EXLM, KC_LCBR, KC_RCBR, KC_AT, KC_NO,
-        LALT(LCTL(KC_LEFT)), KC_LEFT_ALT, LALT(LCTL(KC_RIGHT)), KC_NO, KC_GRAVE,
-        KC_TRANSPARENT, KC_NO, KC_HASH, KC_LPRN, KC_RPRN, KC_DLR, KC_NO, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO, KC_PIPE,
-        KC_LBRC, KC_RBRC, KC_AMPR, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT),
-    [_mac_symbols] = LAYOUT_planck_grid(
-        KC_TRANSPARENT, LCTL(LSFT(KC_TAB)), KC_TRANSPARENT, LCTL(KC_TAB),
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, LCTL(KC_LEFT), KC_RIGHT_GUI, LCTL(KC_RIGHT),
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT),
-    [_math] = LAYOUT_planck_grid(
-        KC_0, KC_1, KC_2, KC_3, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,
-        KC_PERC, KC_TILD, KC_BSLS, KC_NO, KC_DOT, KC_4, KC_5, KC_6, KC_NO,
-        KC_GRAVE, KC_TRANSPARENT, KC_NO, KC_MINUS, KC_PLUS, KC_SLASH, KC_ASTR,
-        KC_EQUAL, KC_7, KC_8, KC_9, KC_NO, KC_CALCULATOR, KC_TRANSPARENT, KC_NO,
-        KC_NO, KC_LABK, KC_RABK, KC_CIRC, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT),
-    [_delete] = LAYOUT_planck_grid(
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LCTL(KC_DELETE),
-        KC_DELETE, KC_NO, KC_NO, KC_TRANSPARENT, KC_NO, KC_BSPC, LCTL(KC_BSPC),
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT),
-    [_mac_delete] = LAYOUT_planck_grid(
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_DELETE), KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, LALT(KC_BSPC), KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT),
-    [_mouse] = LAYOUT_planck_grid(
-        KC_NO, KC_MS_BTN2, KC_MS_UP, KC_MS_BTN1, LCTL(KC_V), KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_MS_ACCEL2, KC_MS_BTN1, KC_UP, KC_MS_BTN2, KC_NO,
-        KC_NO, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, LCTL(KC_C), KC_NO,
-        KC_TRANSPARENT, LCTL(KC_LEFT), KC_LEFT, KC_DOWN, KC_RIGHT,
-        RCTL(KC_RIGHT), KC_MS_WH_LEFT, KC_MS_WH_UP, KC_NO, KC_MS_WH_DOWN,
-        KC_MS_WH_RIGHT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME, KC_ENTER,
-        KC_NO, KC_NO, KC_END, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT),
-    [_mouse_mac] = LAYOUT_planck_grid(
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_V),     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_C),     KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_LEFT),  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_RIGHT), 
-        KC_MS_WH_RIGHT, KC_MS_WH_DOWN,  KC_NO,          KC_MS_WH_UP,    KC_MS_WH_LEFT,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    [_BASE] = LAYOUT(
+        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,      KC_DEL,   KC_BSPC,   KC_Y,      KC_U,      KC_I,      KC_O,    KC_P,
+        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,      H_QUOTE,  H_TAB,     KC_H,      KC_J,      KC_K,      KC_L,    KC_SCLN,
+        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,      H_ESC,    H_ENTER,   KC_N,      KC_M,      KC_COMMA,  KC_DOT,  KC_SLASH,
+        KC_LCTL, KC_LALT, MO(_FN), KC_LSFT, MO(_SYMS), KC_SPC,   KC_SPC,    MO(_NUMS), MO(_MOS),  XXXXXXX,   KC_RCTL, KC_LGUI
         ),
-    [_fn] = LAYOUT_planck_grid(
-        KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9,
-        KC_F10, KC_F11, KC_F12, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP, KC_MPRV, KC_MNXT, KC_NO,
-        KC_AUDIO_MUTE, TG(_mac), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_AUDIO_VOL_DOWN, KC_AUDIO_VOL_UP, KC_NO, KC_MEDIA_PLAY_PAUSE,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_NO, KC_TRANSPARENT, KC_TRANSPARENT,
-        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT)};
+    [_MAC_BASE] = LAYOUT(
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_R_GUI, KC_ROPT,  KC_TRNS,  KC_TRNS,  M_SYMS,    KC_TRNS,  KC_TRNS,  KC_TRNS,   M_MOUSE,  KC_TRNS,  KC_TRNS,  MC_MENU
+        ),
+    [_NUMS] = LAYOUT(
+        KC_0,     KC_1,    KC_2,    KC_3,     XXXXXXX,  KC_TRNS,   KC_TRNS, XXXXXXX,  KC_PERC,  KC_TILD,  KC_BSLS,  XXXXXXX,
+        KC_DOT,   KC_4,    KC_5,    KC_6,     XXXXXXX,  KC_GRAVE,  KC_TRNS, XXXXXXX,  KC_MINUS, KC_PLUS,  KC_SLASH, KC_ASTR,
+        KC_EQUAL, KC_7,    KC_8,    KC_9,     XXXXXXX,  KC_TRNS,   KC_TRNS, XXXXXXX,  XXXXXXX,  KC_LABK,  KC_RABK,  KC_CIRC,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        ),
+    [_SYMS] = LAYOUT(
+        KC_DTAB,  KC_TLFT, KC_NTAB, KC_TRIT, KC_TAB,    KC_TRNS,   KC_TRNS, XXXXXXX,  KC_EXLM,  KC_LCBR,  KC_RCBR,  KC_AT,
+        KC_SRCH,  KC_SLFT, KC_LALT, KC_SRIT, XXXXXXX,   KC_GRAVE,  KC_TRNS, XXXXXXX,  KC_HASH,  KC_LPRN,  KC_RPRN,  KC_DLR,
+        XXXXXXX,  KC_PUP,  XXXXXXX, KC_PDWN, XXXXXXX,   KC_TRNS,   KC_TRNS, XXXXXXX,  KC_PIPE,  KC_LBRC,  KC_RBRC,  KC_AMPR,
+        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS,   KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        ),
+    [_MAC_SYMS] = LAYOUT(
+        MC_DTAB,  MC_TLFT,  MC_NTAB,  MC_TRIT,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        MC_SRCH,  MC_SLFT,  KC_R_GUI, MC_SRIT,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  MC_PUP,   KC_TRNS,  MC_PDWN,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        ),
+    [_FN] = LAYOUT(
+        XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F10,  XXXXXXX, XXXXXXX, XXXXXXX, KC_BRID, KC_BRIU, XXXXXXX, XXXXXXX,
+        XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  XXXXXXX, XXXXXXX, XXXXXXX, KC_VOLD, KC_VOLU, XXXXXXX, KC_VOLM,
+        TOG_MAC, KC_F7,   KC_F8,   KC_F9,   KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, KC_MPRV, KC_MNXT, XXXXXXX, KC_PAUS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        ),
+
+    [_MOS] = LAYOUT(
+        XXXXXXX, KC_RCLC, KC_MUP,  KC_LCLC, XXXXXXX, KC_TRNS, KC_TRNS, XXXXXXX, KC_LCLC, KC_UP,   KC_RCLC, XXXXXXX,
+        XXXXXXX, KC_MLFT, KC_MDWN, KC_MRIT, XXXXXXX, KC_TRNS, KC_TRNS, KC_WLFT, KC_LEFT, KC_DOWN, KC_RGHT, KC_WRIT,
+        KC_PLFT, KC_PUP,  XXXXXXX, KC_PDWN, KC_PRIT, KC_TRNS, KC_TRNS, KC_HOME, KC_ENTER,XXXXXXX, XXXXXXX, KC_END,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        ),
+
+    [_MAC_MOS] = LAYOUT(
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  MC_WLFT,   KC_TRNS,  KC_TRNS,  KC_TRNS,  MC_WRIT,
+        KC_TRNS,  MC_PUP,   KC_TRNS,  MC_PDWN,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        ),
+
+    [_DEL] = LAYOUT(
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  KC_DWRD, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, KC_ESC,  KC_ENTER,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_BWRD, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        ),
+
+    [_MAC_DEL] = LAYOUT(
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_DWRD,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
+        ),
+};
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [_base] = {{0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},
-               {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-               {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-               {43, 255, 255}, {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-               {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
-    [_mac] = {{0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},
-              {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-              {21, 255, 255}, {21, 255, 255},  {43, 255, 255},  {43, 255, 255},
-              {43, 255, 255}, {0, 0, 255},     {43, 255, 255},  {21, 255, 255},
-              {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
-    [_macro] =
-        {{0, 0, 0},       {127, 255, 255}, {127, 255, 255}, {0, 0, 0},
-         {0, 0, 0},       {0, 255, 255},   {0, 255, 255},   {0, 0, 0},
-         {0, 0, 0},       {127, 255, 255}, {0, 0, 0},       {127, 255, 255},
-         {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {127, 255, 255},
-         {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},
-         {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},       {0, 0, 0},       {127, 255, 255}, {0, 0, 0},
-         {127, 255, 255}, {180, 255, 255}, {180, 255, 255}, {0, 0, 0},
-         {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
-    [_symbols] =
-        {{0, 0, 0},       {85, 255, 255},  {0, 0, 0},       {85, 255, 255},
-         {180, 255, 255}, {0, 255, 255},   {0, 255, 255},   {0, 0, 0},
-         {210, 255, 255}, {0, 0, 255},     {0, 0, 255},     {170, 255, 255},
-         {0, 0, 0},       {85, 255, 255},  {43, 255, 255},  {85, 255, 255},
-         {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},
-         {170, 255, 255}, {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},       {180, 255, 255}, {180, 255, 255}, {0, 0, 0},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
-    [_mac_symbols] =
-        {{0, 0, 255},    {85, 255, 255},  {0, 0, 255},     {85, 255, 255},
-         {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {85, 255, 255},  {21, 255, 255},  {85, 255, 255},
-         {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
-    [_math] =
-        {{0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 0},       {0, 255, 255},   {0, 255, 255},   {0, 0, 0},
-         {170, 255, 255}, {0, 0, 255},     {0, 0, 255},     {0, 0, 0},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},
-         {0, 0, 255},     {85, 255, 255},  {0, 0, 255},     {85, 255, 255},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 0},       {170, 255, 255}, {180, 255, 255}, {0, 0, 0},
-         {0, 0, 0},       {0, 0, 255},     {0, 0, 255},     {85, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
-    [_delete] =
-        {{0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},      {0, 255, 255},   {0, 255, 255},   {0, 0, 0},
-         {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},      {0, 0, 0},       {0, 255, 255},   {0, 255, 255},
-         {0, 0, 0},      {0, 0, 0},       {180, 255, 255}, {0, 0, 0},
-         {0, 255, 255},  {0, 255, 255},   {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {0, 0, 0},      {180, 255, 255}, {180, 255, 255}, {0, 0, 0},
-         {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
-    [_mac_delete] =
-        {{0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 255, 255},   {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},
-         {0, 0, 255},    {0, 255, 255},   {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},
-         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
-    [_mouse] =
-        {{0, 0, 0},       {21, 255, 255},  {210, 255, 255}, {21, 255, 255},
-         {21, 255, 255},  {0, 255, 255},   {0, 255, 255},   {43, 255, 255},
-         {21, 255, 255},  {210, 255, 255}, {21, 255, 255},  {0, 0, 0},
-         {0, 0, 0},       {210, 255, 255}, {210, 255, 255}, {210, 255, 255},
-         {21, 255, 255},  {0, 0, 0},       {180, 255, 255}, {210, 255, 255},
-         {210, 255, 255}, {210, 255, 255}, {210, 255, 255}, {210, 255, 255},
-         {210, 255, 255}, {210, 255, 255}, {0, 0, 0},       {210, 255, 255},
-         {210, 255, 255}, {180, 255, 255}, {180, 255, 255}, {210, 255, 255},
-         {180, 255, 255}, {0, 0, 0},       {0, 0, 0},       {210, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
-    [_mouse_mac] =
-        {{0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {21, 255, 255},  {0, 255, 255},   {0, 255, 255},   {0, 0, 255},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {21, 255, 255},  {0, 0, 255},     {180, 255, 255}, {210, 255, 255},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {210, 255, 255},
-         {210, 255, 255}, {210, 255, 255}, {0, 0, 0},       {210, 255, 255},
-         {210, 255, 255}, {180, 255, 255}, {180, 255, 255}, {0, 0, 255},
-         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-         {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
-    [_fn] = {{170, 255, 255}, {170, 255, 255}, {170, 255, 255}, {170, 255, 255},
-             {170, 255, 255}, {170, 255, 255}, {170, 255, 255}, {170, 255, 255},
-             {170, 255, 255}, {170, 255, 255}, {170, 255, 255}, {170, 255, 255},
-             {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-             {0, 0, 0},       {0, 0, 0},       {0, 255, 255},   {85, 255, 255},
-             {210, 255, 255}, {210, 255, 255}, {0, 0, 0},       {0, 255, 255},
-             {21, 255, 255},  {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-             {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
-             {0, 255, 255},   {85, 255, 255},  {0, 0, 0},       {0, 255, 255},
-             {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},
-             {43, 255, 255},  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},
-             {43, 255, 255},  {43, 255, 255},  {43, 255, 255}}};
+    [_BASE] = {
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},    {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},    {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},    {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255}, {43, 255, 255},                  {0, 0, 255},     {43, 255, 255},  {43, 255, 255}, {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
+    [_MAC_BASE] = {
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+        {21, 255, 255}, {21, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},                  {0, 0, 255},     {43, 255, 255},  {21, 255, 255},  {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
+    [_NUMS] ={
+        {0, 0, 0},       {127, 255, 255}, {127, 255, 255}, {0, 0, 0},        {0, 0, 0},       {0, 255, 255},   {0, 255, 255},   {0, 0, 0},       {0, 0, 0},       {127, 255, 255}, {0, 0, 0},       {127, 255, 255},
+        {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {127, 255, 255},  {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
+        {0, 0, 0},       {0, 0, 0},       {127, 255, 255}, {0, 0, 0},        {127, 255, 255}, {180, 255, 255}, {180, 255, 255}, {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
+        {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},   {43, 255, 255},                   {0, 0, 255},     {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
+    [_SYMS] ={
+         {0, 0, 0},       {85, 255, 255},  {0, 0, 0},       {85, 255, 255},  {180, 255, 255}, {0, 255, 255},   {0, 255, 255},   {0, 0, 0},       {210, 255, 255}, {0, 0, 255},     {0, 0, 255},     {170, 255, 255},
+         {0, 0, 0},       {85, 255, 255},  {43, 255, 255},  {85, 255, 255},  {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},       {170, 255, 255}, {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {0, 0, 0},       {180, 255, 255}, {180, 255, 255}, {0, 0, 0},       {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},                   {0, 0, 255},     {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
+    [_MAC_SYMS] =
+        {{0, 0, 255},    {85, 255, 255},  {0, 0, 255},     {85, 255, 255},  {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {0, 0, 255},    {85, 255, 255},  {21, 255, 255},  {85, 255, 255},  {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},                  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},  {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
+    [_FN] =
+        {{0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 0},       {0, 255, 255},   {0, 255, 255},   {0, 0, 0},       {170, 255, 255}, {0, 0, 255},     {0, 0, 255},     {0, 0, 0},
+         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 0},       {0, 0, 255},     {180, 255, 255}, {0, 0, 0},       {0, 0, 255},     {85, 255, 255},  {0, 0, 255},     {85, 255, 255},
+         {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 0},       {170, 255, 255}, {180, 255, 255}, {0, 0, 0},       {0, 0, 0},       {0, 0, 255},     {0, 0, 255},     {85, 255, 255},
+         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},                   {0, 0, 255},     {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
+    [_MOS] = {
+         {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},      {0, 0, 0},      {0, 255, 255},   {0, 255, 255},   {0, 0, 0},       {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
+         {0, 0, 0},      {0, 0, 0},       {0, 255, 255},   {0, 255, 255},  {0, 0, 0},      {0, 0, 0},       {180, 255, 255}, {0, 0, 0},       {0, 255, 255},  {0, 255, 255},   {0, 0, 0},       {0, 0, 0},
+         {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},      {0, 0, 0},      {180, 255, 255}, {180, 255, 255}, {0, 0, 0},       {0, 0, 0},      {0, 0, 0},       {0, 0, 0},       {0, 0, 0},
+         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255}, {43, 255, 255},                  {0, 0, 255},     {43, 255, 255},  {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
+    [_DEL] = {
+         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {0, 255, 255},   {0, 255, 255},   {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {0, 0, 255},    {0, 0, 255},     {0, 255, 255},   {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 255, 255},   {0, 0, 255},     {0, 0, 255},
+         {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},     {0, 0, 255},    {180, 255, 255}, {180, 255, 255}, {0, 0, 255},     {0, 0, 255},    {0, 0, 255},     {0, 0, 255},     {0, 0, 255},
+         {43, 255, 255}, {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},                  {0, 0, 255},     {43, 255, 255},  {43, 255, 255},  {43, 255, 255}, {43, 255, 255},  {43, 255, 255}},
+    [_MAC_DEL] = {
+         {0, 0, 0},       {21, 255, 255},  {210, 255, 255}, {21, 255, 255},   {21, 255, 255},  {0, 255, 255},   {0, 255, 255},   {43, 255, 255},   {21, 255, 255},  {210, 255, 255}, {21, 255, 255},  {0, 0, 0},
+         {0, 0, 0},       {210, 255, 255}, {210, 255, 255}, {210, 255, 255},  {21, 255, 255},  {0, 0, 0},       {180, 255, 255}, {210, 255, 255},  {210, 255, 255}, {210, 255, 255}, {210, 255, 255}, {210, 255, 255},
+         {210, 255, 255}, {210, 255, 255}, {0, 0, 0},       {210, 255, 255},  {210, 255, 255}, {180, 255, 255}, {180, 255, 255}, {210, 255, 255},  {180, 255, 255}, {0, 0, 0},       {0, 0, 0},       {210, 255, 255},
+         {43, 255, 255},  {43, 255, 255},  {43, 255, 255},  {43, 255, 255},   {43, 255, 255},                   {0, 0, 255},     {43, 255, 255},  {43, 255, 255},   {43, 255, 255},  {43, 255, 255},  {43, 255, 255}},
+};
 
 uint16_t layer_state_set_user(uint16_t state) {
-  bool _delete_is_on =
-      layer_state_cmp(state, _symbols) && layer_state_cmp(state, _math);
+  bool _delete_is_on = layer_state_cmp(state, _SYMS) && layer_state_cmp(state, _NUMS);
   if (_delete_is_on) {
-    state |= (1 << _delete);
+    state |= (1 << _DEL);
   } else {
-    state &= ~(1 << _delete);
+    state &= ~(1 << _DEL);
   }
 
-  bool _mac_delete_is_on =
-      layer_state_cmp(state, _mac_symbols) && layer_state_cmp(state, _math);
+  bool _mac_delete_is_on = layer_state_cmp(state, _MAC_SYMS) && layer_state_cmp(state, _NUMS);
   if (_mac_delete_is_on) {
-    state |= (1 << _mac_delete);
+    state |= (1 << _MAC_DEL);
   } else {
-    state &= ~(1 << _mac_delete);
+    state &= ~(1 << _MAC_DEL);
   }
 
   return state;
@@ -347,73 +240,47 @@ bool rgb_matrix_indicators_user(void) {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case DUMMY_INIT_VAL:
+    static uint16_t hold_timer;
+
+    switch (keycode) {
+        case H_ESC:
+        case H_QUOTE:
+        case H_TAB:
+        case H_ENTER:
+            if (record->event.pressed) {
+                hold_timer = timer_read();
+            } else {
+                if (timer_elapsed(hold_timer) > HOLDING_TERM) {
+                    switch (keycode) {
+                        case H_ESC:    tap_code(KC_ESC);    break;
+                        case H_QUOTE:  tap_code(KC_QUOTE);  break;
+                        case H_TAB:    tap_code(KC_TAB);    break;
+                        case H_ENTER:  tap_code(KC_ENTER);  break;
+                    }
+                }
+            }
+            return false;
+
+        case M_MOUSE:
+            if (record->event.pressed) {
+                layer_on(_MOS);
+                layer_on(_MAC_MOS);
+            } else {
+                layer_off(_MAC_MOS);
+                layer_off(_MOS);
+            }
+            return false;
+
+        case M_SYMS:
+            if (record->event.pressed) {
+                layer_on(_SYMS);
+                layer_on(_MAC_SYMS);
+            } else {
+                layer_off(_MAC_SYMS);
+                layer_off(_SYMS);
+            }
+            return false;
+    }
+
     return true;
-
-  case m_mouse:
-    if (record->event.pressed) {
-      layer_on(_mouse);
-      layer_on(_mouse_mac);
-    } else {
-      layer_off(_mouse_mac);
-      layer_off(_mouse);
-    }
-    return false;
-    break;
-
-  case m_syms:
-    if (record->event.pressed) {
-      layer_on(_symbols);
-      layer_on(_mac_symbols);
-    } else {
-      layer_off(_mac_symbols);
-      layer_off(_symbols);
-    }
-    return false;
-    break;
-
-  case m_pnt:
-    if (record->event.pressed) {
-      SEND_STRING("System.out.println(");
-    }
-    break;
-
-  case m_check:
-    if (record->event.pressed) {
-      SEND_STRING("- [ ]");
-    }
-    break;
-
-  case m_for:
-    if (record->event.pressed) {
-      SEND_STRING("for");
-    }
-    break;
-
-  case m_while:
-    if (record->event.pressed) {
-      SEND_STRING("while");
-    }
-    break;
-
-  case m_const:
-    if (record->event.pressed) {
-      SEND_STRING("const");
-    }
-    break;
-
-  case m_else:
-    if (record->event.pressed) {
-      SEND_STRING("else");
-    }
-    break;
-
-  case m_brew:
-    if (record->event.pressed) {
-      SEND_STRING("brew");
-    }
-    break;
-  }
-  return true;
 }
