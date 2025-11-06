@@ -1,4 +1,3 @@
-
 #pragma once
 
 #ifdef AUDIO_ENABLE
@@ -20,7 +19,7 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX 40
+#define MOUSEKEY_TIME_TO_MAX 20
 #undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 5
 

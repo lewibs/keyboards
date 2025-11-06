@@ -52,9 +52,11 @@ extern rgb_config_t rgb_matrix_config;
 #define C_RED {0, 255, 255}
 #define C_PUR {180, 255, 255}
 #define C_YEL {43, 255, 255}
-#define C_GRE {127, 255, 255}
+#define C_TEL {127, 255, 255}
+#define C_GRE {85, 255, 255}
 #define C_OFF {0, 0, 0}
 #define C_BLU {170, 255, 255}
+#define C_ORA {21, 255, 255}
 
 
 #define _BASE 0
@@ -140,8 +142,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MAC_DEL] = LAYOUT_planck_grid(
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_DWRD,  KC_TRNS,  KC_TRNS,
-        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS,
-        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_ESC,   KC_ENTER, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  MC_BWRD,  KC_TRNS,  KC_TRNS,
+        KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
         KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS
         ),
 };
@@ -166,40 +168,40 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_SYMS] ={
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_RED, C_ORA, C_GRE, C_ORA, C_WHI, C_RED, C_RED, C_OFF, C_RED, C_WHI, C_WHI, C_BLU,
+        C_BLU, C_ORA, C_YEL, C_ORA, C_OFF, C_WHI, C_PUR, C_OFF, C_BLU, C_WHI, C_WHI, C_GRE,
+        C_OFF, C_ORA, C_OFF, C_ORA, C_OFF, C_PUR, C_PUR, C_OFF, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_MAC_SYMS] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_RED, C_ORA, C_GRE, C_ORA, C_WHI, C_RED, C_RED, C_OFF, C_RED, C_WHI, C_WHI, C_BLU,
+        C_BLU, C_ORA, C_YEL, C_ORA, C_OFF, C_WHI, C_PUR, C_OFF, C_BLU, C_WHI, C_WHI, C_GRE,
+        C_OFF, C_ORA, C_OFF, C_ORA, C_OFF, C_PUR, C_PUR, C_OFF, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_FN] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_OFF, C_BLU, C_BLU, C_BLU, C_BLU, C_OFF, C_OFF, C_OFF, C_RED, C_GRE, C_OFF, C_OFF,
+        C_OFF, C_BLU, C_BLU, C_BLU, C_BLU, C_OFF, C_OFF, C_OFF, C_RED, C_GRE, C_OFF, C_GRE,
+        C_ORA, C_BLU, C_BLU, C_BLU, C_BLU, C_OFF, C_OFF, C_OFF, C_PUR, C_PUR, C_OFF, C_RED,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_MOS] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_OFF, C_PUR, C_ORA, C_PUR, C_OFF, C_RED, C_RED, C_RED, C_PUR, C_ORA, C_PUR, C_OFF,
+        C_OFF, C_ORA, C_ORA, C_ORA, C_OFF, C_WHI, C_PUR, C_ORA, C_ORA, C_ORA, C_ORA, C_ORA,
+        C_ORA, C_ORA, C_OFF, C_ORA, C_ORA, C_PUR, C_PUR, C_ORA, C_PUR, C_OFF, C_OFF, C_ORA,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_DEL] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_RED, C_RED, C_OFF, C_OFF,
+        C_OFF, C_OFF, C_PUR, C_PUR, C_OFF, C_OFF, C_OFF, C_OFF, C_RED, C_RED, C_OFF, C_OFF,
+        C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_MAC_DEL] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_RED, C_RED, C_OFF, C_OFF,
+        C_OFF, C_OFF, C_PUR, C_PUR, C_OFF, C_OFF, C_OFF, C_OFF, C_RED, C_RED, C_OFF, C_OFF,
+        C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF, C_OFF,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
 };
 
