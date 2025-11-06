@@ -54,6 +54,7 @@ extern rgb_config_t rgb_matrix_config;
 #define C_YEL {43, 255, 255}
 #define C_GRE {127, 255, 255}
 #define C_OFF {0, 0, 0}
+#define C_BLU {170, 255, 255}
 
 
 #define _BASE 0
@@ -147,22 +148,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [_BASE] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_RED, C_RED, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_PUR, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_PUR, C_PUR, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
         },
     [_MAC_BASE] = {
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_RED, C_RED, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_PUR, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_WHI, C_PUR, C_PUR, C_WHI, C_WHI, C_WHI, C_WHI, C_WHI,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_NUMS] ={
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
-        C_RED, C_RED, C_RED, C_RED, C_RED,        C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_OFF, C_RED, C_RED, C_OFF, C_BLU, C_BLU, C_WHI, C_OFF,
+        C_WHI, C_WHI, C_WHI, C_WHI, C_OFF, C_WHI, C_PUR, C_OFF, C_RED, C_GRE, C_RED, C_GRE,
+        C_BLU, C_WHI, C_WHI, C_WHI, C_OFF, C_PUR, C_PUR, C_OFF, C_OFF, C_WHI, C_WHI, C_GRE,
+        C_YEL, C_YEL, C_YEL, C_YEL, C_YEL,        C_WHI, C_YEL, C_YEL, C_OFF, C_YEL, C_YEL,
       },
     [_SYMS] ={
         C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED, C_RED,
